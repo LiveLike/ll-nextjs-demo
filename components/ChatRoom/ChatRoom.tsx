@@ -1,20 +1,15 @@
-import {
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  useLayoutEffect,
-} from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { ChatMessage } from "../ChatMessage/ChatMessage";
 import {
-  getMessageList,
   addMessageListener,
   removeMessageListener,
   sendMessage,
 } from "@livelike/core-api";
 import styles from "./ChatRoom.module.css";
+import { useUserProfile } from "../UserProfileProvider/UserProfileProvider";
 
 export function ChatRoom({ roomId, messages: propMessages }) {
+  const profile = useUserProfile();
   const [messages, setMessageList] = useState(propMessages);
   const [chatRoomInput, setChatRoomInput] = useState("");
   const chatRoomListNodeRef = useRef(null);
@@ -35,13 +30,25 @@ export function ChatRoom({ roomId, messages: propMessages }) {
   );
 
   useEffect(() => {
+    // add message listener only when client profile is present
+    // i.e. sdk is initialised
+    if (!profile) {
+      return;
+    }
     if (chatRoomListNodeRef.current) {
       chatRoomListNodeRef.current.scrollTop =
         chatRoomListNodeRef.current.scrollHeight;
     }
     function onMessage({ event, message }) {
       if (event === "messagereceived") {
-        setMessageList([...messages, message]);
+        const msgIndex = messages.findIndex((msg) => msg.id === message.id);
+        if (msgIndex > -1) {
+          const newList = [...messages];
+          newList.splice(msgIndex, 1, message);
+          setMessageList(newList);
+        } else {
+          setMessageList([...messages, message]);
+        }
       }
     }
     addMessageListener(
@@ -54,7 +61,7 @@ export function ChatRoom({ roomId, messages: propMessages }) {
     return () => {
       removeMessageListener({ roomId }, onMessage);
     };
-  }, [messages]);
+  }, [messages, profile]);
 
   useEffect(() => {
     if (chatRoomListNodeRef?.current) {

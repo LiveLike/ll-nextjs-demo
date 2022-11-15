@@ -2,38 +2,26 @@ import { useRouter } from "next/router";
 import { initApi, getMessageList } from "@livelike/core-api";
 import { ChatRoom } from "../../components/ChatRoom/ChatRoom";
 import styles from "./[roomId].module.css";
-import { useEffect } from "react";
+import { UserProfileProvider } from "../../components/UserProfileProvider/UserProfileProvider";
 
 interface IChatroomProps {
   messages: any;
   profile: any;
 }
 
-const useInitialiseLiveLikeClient = (profile) => {
-  useEffect(() => {
-    async function initLL() {
-      await initApi({
-        endpoint: "https://cf-blast-dig.livelikecdn.com/api/v1/",
-        clientId: "lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje",
-        accessToken: profile.access_token,
-      });
-    }
-    initLL();
-  }, []);
-};
-
 export default function Chatroom(props: IChatroomProps) {
-  useInitialiseLiveLikeClient(props.profile);
   const router = useRouter();
   const { roomId } = router.query;
   return (
-    <div className={styles.pageContainer}>
-      <h1 className={styles.nickname}>Welcome {props.profile.nickname}</h1>
-      <h3 className={styles.roomId}>ChatRoom Id: {roomId}</h3>
-      <main className={styles.chatroomContainer}>
-        <ChatRoom roomId={roomId} messages={props.messages} />
-      </main>
-    </div>
+    <UserProfileProvider profile={props.profile}>
+      <div className={styles.pageContainer}>
+        <h1 className={styles.nickname}>Welcome {props.profile.nickname}</h1>
+        <h3 className={styles.roomId}>ChatRoom Id: {roomId}</h3>
+        <main className={styles.chatroomContainer}>
+          <ChatRoom roomId={roomId} messages={props.messages} />
+        </main>
+      </div>
+    </UserProfileProvider>
   );
 }
 

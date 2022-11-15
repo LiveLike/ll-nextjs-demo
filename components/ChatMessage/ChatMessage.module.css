@@ -2,8 +2,9 @@
   padding: 12px;
   background-color: var(--card);
   margin: 10px 0;
-  box-shadow: 3px 2px 5px var(--card-shadow);
+  /* box-shadow: 3px 2px 5px var(--card-shadow); */
   border-radius: 8px;
+  align-self: flex-start;
 }
 
 .chatmessageCard p {
