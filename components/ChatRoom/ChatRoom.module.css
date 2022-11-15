@@ -26,6 +26,7 @@
   cursor: pointer;
   border-radius: 8px;
   margin-left: 10px;
+  color: var(--text);
 }
 
 .chatroomInput {
