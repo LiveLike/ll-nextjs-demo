@@ -1,0 +1,39 @@
+.chatroomList {
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.chatroomInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  height: 35px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sendButton {
+  height: 100%;
+  background-color: var(--accent);
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.chatroomInput {
+  padding: 10px;
+  background-color: var(--card);
+  color: var(--text);
+  height: 100%;
+  flex-grow: 1;
+  border-radius: 8px;
+  border: 0;
+}

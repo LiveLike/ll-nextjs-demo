@@ -24,3 +24,26 @@ a {
     background: black;
   }
 }
+
+body.light {
+  --main-background: #dee3ec;
+  --text: black;
+  --card: #fff;
+  --card-shadow: #aeb2b9;
+  --reaction-background: #ffff;
+  --reaction-panel-shadow: #aeb2b9;
+  --accent: #27bf9d;
+  color: var(--text);
+  background-color: var(--main-background);
+}
+
+body.dark {
+  --main-background: #1f2327;
+  --text: #ffff;
+  --card: #131517;
+  --card-shadow: #3b3d406e;
+  --reaction-background: #2b3136;
+  --reaction-panel-shadow: transparent;
+  --accent: #27bf9d;
+  color: white;
+}

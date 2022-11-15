@@ -1,0 +1,21 @@
+.chatmessageCard {
+  padding: 12px;
+  background-color: var(--card);
+  margin: 10px 0;
+  box-shadow: 3px 2px 5px var(--card-shadow);
+  border-radius: 8px;
+}
+
+.chatmessageCard p {
+  margin: 8px 0;
+}
+
+.chatmessageUsername {
+  font-weight: bold;
+}
+
+.chatmessageFooter {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
