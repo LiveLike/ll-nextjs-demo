@@ -96,7 +96,14 @@ export function ChatRoom({ roomId, messages: propMessages }) {
           value={chatRoomInput}
           placeholder="Enter Message"
         />
-        <button className={styles.sendButton}>Send</button>
+        <button
+          className={styles.sendButton}
+          onClick={() =>
+            chatRoomInput && chatRoomInput.length && onSendMessage()
+          }
+        >
+          Send
+        </button>
       </div>
     </>
   );
