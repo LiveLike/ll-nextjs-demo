@@ -5,6 +5,7 @@
   /* box-shadow: 3px 2px 5px var(--card-shadow); */
   border-radius: 8px;
   align-self: flex-start;
+  max-width: 90%;
 }
 
 .chatmessageCard p {

@@ -35,6 +35,7 @@ body.light {
   --accent: #27bf9d;
   color: var(--text);
   background-color: var(--main-background);
+  color-scheme: light;
 }
 
 body.dark {
@@ -46,4 +47,5 @@ body.dark {
   --reaction-panel-shadow: transparent;
   --accent: #27bf9d;
   color: white;
+  color-scheme: dark;
 }
