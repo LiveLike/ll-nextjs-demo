@@ -1,14 +1,14 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { initApi } from "@livelike/core-api";
+import { initApi, IUserProfile } from "@livelike/core-api";
 
-const UserProfileContext = createContext(null);
+const UserProfileContext = createContext<IUserProfile | null>(null);
 
 export const useUserProfile = () => {
   return useContext(UserProfileContext);
 };
 
 export const UserProfileProvider = ({ children, profile }) => {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState<IUserProfile | null>(null);
   useEffect(() => {
     async function initLL() {
       return initApi({

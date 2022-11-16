@@ -2,19 +2,29 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { ChatMessage } from "../ChatMessage/ChatMessage";
 import {
   addMessageListener,
+  IChatMessageResponsePayload,
+  IMessageListenerCallbackArgs,
   removeMessageListener,
   sendMessage,
 } from "@livelike/core-api";
 import styles from "./ChatRoom.module.css";
 import { useUserProfile } from "../UserProfileProvider/UserProfileProvider";
 
-export function ChatRoom({ roomId, messages: propMessages }) {
+interface IChatRoomProps {
+  roomId: string;
+  messages: IChatMessageResponsePayload[];
+}
+
+export function ChatRoom({ roomId, messages: propMessages }: IChatRoomProps) {
   const profile = useUserProfile();
   const [messages, setMessageList] = useState(propMessages);
   const [chatRoomInput, setChatRoomInput] = useState("");
-  const chatRoomListNodeRef = useRef(null);
+  const chatRoomListNodeRef = useRef<HTMLDivElement>(null);
   const updateMessageList = useCallback(
-    (message, _messages) => {
+    (
+      message: IChatMessageResponsePayload,
+      _messages: IChatMessageResponsePayload[]
+    ) => {
       const msgIndex = _messages.findIndex(({ id }) => id === message.id);
       const updatedMessageList =
         msgIndex > -1
@@ -39,7 +49,7 @@ export function ChatRoom({ roomId, messages: propMessages }) {
       chatRoomListNodeRef.current.scrollTop =
         chatRoomListNodeRef.current.scrollHeight;
     }
-    function onMessage({ event, message }) {
+    function onMessage({ event, message }: IMessageListenerCallbackArgs) {
       if (event === "messagereceived") {
         const msgIndex = messages.findIndex((msg) => msg.id === message.id);
         if (msgIndex > -1) {

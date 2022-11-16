@@ -12,6 +12,9 @@ interface IChatroomProps {
 export default function Chatroom(props: IChatroomProps) {
   const router = useRouter();
   const { roomId } = router.query;
+  if (typeof roomId !== "string") {
+    return null;
+  }
   return (
     <UserProfileProvider profile={props.profile}>
       <div className={styles.pageContainer}>
