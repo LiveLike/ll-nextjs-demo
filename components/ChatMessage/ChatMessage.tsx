@@ -1,6 +1,11 @@
+import { IChatUserMessageResponsePayload } from "@livelike/engagement-api";
 import styles from "./ChatMessage.module.css";
 
-export function ChatMessage({ messageDetails }) {
+export function ChatMessage({
+  messageDetails,
+}: {
+  messageDetails: IChatUserMessageResponsePayload;
+}) {
   return (
     <div className={styles.chatmessageCard}>
       <span className={styles.chatmessageUsername}>
