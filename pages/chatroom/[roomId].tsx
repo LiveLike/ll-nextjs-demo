@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { initApi, getMessageList } from "@livelike/core-api";
+import { initApi, getMessageList } from "@livelike/engagement-api";
 import { ChatRoom } from "../../components/ChatRoom/ChatRoom";
 import styles from "./[roomId].module.css";
 import { UserProfileProvider } from "../../components/UserProfileProvider/UserProfileProvider";

@@ -1,5 +1,63 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+### Setup:
+
+##### 1. Install dependencies:
+
+```sh
+npm install
+```
+
+##### 2. Install [nvm](https://github.com/nvm-sh/nvm#about)
+
+Nvm is needed to locally link @livelike/engagement-api and install its dependencies.
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+```
+
+Add below lines in your .bashrc or .zshrc file
+
+```sh
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+
+Check nvm available in CLI and install node `v18.12.1`
+
+```sh
+nvm install v18.12.1
+```
+
+##### 3. Clone websdk repo branch with engagement-api changes and link engagement-api
+
+Inside cloned repo with proper checked out branch
+
+```sh
+cd release/engagement-api
+```
+
+This globally links @livelike/engagement-api package
+
+```sh
+npm link
+```
+
+##### 4. Add @livelike/engagement-api dependencies
+
+```json
+dependencies: {
+    "@livelike/engagement-api": "0.0.0",
+}
+```
+
+##### 5. Locally link @livelike/engagement-api
+
+```sh
+npm run link-api
+```
+
 ## Getting Started
 
 First, run the development server:
@@ -10,9 +68,10 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/chat/6c5577e7-95cf-40ff-9a29-a6f57d0da322](http://localhost:3000/6c5577e7-95cf-40ff-9a29-a6f57d0da322) with your browser to see the chat message.
+**You can replace url chatroom Id with any other chat room id**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/chatroom/[roomId].tsx`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
@@ -26,9 +85,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

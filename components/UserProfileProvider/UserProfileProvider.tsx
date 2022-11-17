@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { initApi, IUserProfile } from "@livelike/core-api";
+import { initApi, IUserProfile } from "@livelike/engagement-api";
 
 const UserProfileContext = createContext<IUserProfile | null>(null);
 
