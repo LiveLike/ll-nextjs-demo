@@ -6,7 +6,7 @@ import {
   IMessageListenerCallbackArgs,
   removeMessageListener,
   sendMessage,
-} from "@livelike/engagement-api";
+} from "@livelike/javascript";
 import styles from "./ChatRoom.module.css";
 import { useUserProfile } from "../UserProfileProvider/UserProfileProvider";
 

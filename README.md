@@ -10,7 +10,7 @@ npm install
 
 ##### 2. Install [nvm](https://github.com/nvm-sh/nvm#about)
 
-Nvm is needed to locally link @livelike/engagement-api and install its dependencies.
+Nvm is needed to locally link @livelike/javascript and install its dependencies.
 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
@@ -35,24 +35,24 @@ nvm install v18.12.1
 Inside cloned repo with proper checked out branch
 
 ```sh
-cd release/engagement-api
+cd release/javascript
 ```
 
-This globally links @livelike/engagement-api package
+This globally links @livelike/javascript package
 
 ```sh
 npm link
 ```
 
-##### 4. Add @livelike/engagement-api dependencies
+##### 4. Add @livelike/javascript dependencies in package.json
 
 ```json
 dependencies: {
-    "@livelike/engagement-api": "0.0.0",
+    "@livelike/javascript": "0.0.0",
 }
 ```
 
-##### 5. Locally link @livelike/engagement-api
+##### 5. Locally link @livelike/javascript
 
 ```sh
 npm run link-api
@@ -68,7 +68,7 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000/chat/6c5577e7-95cf-40ff-9a29-a6f57d0da322](http://localhost:3000/6c5577e7-95cf-40ff-9a29-a6f57d0da322) with your browser to see the chat message.
+Open [http://localhost:3000/chatroom/6c5577e7-95cf-40ff-9a29-a6f57d0da322](http://localhost:3000/6c5577e7-95cf-40ff-9a29-a6f57d0da322) with your browser to see the chat message.
 **You can replace url chatroom Id with any other chat room id**
 
 You can start editing the page by modifying `pages/chatroom/[roomId].tsx`. The page auto-updates as you edit the file.

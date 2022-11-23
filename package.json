@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "link-api": "./scripts/link-engagement-api.sh"
+    "link-api": "./scripts/link-javascript.sh"
   },
   "dependencies": {
     "@types/node": "18.11.9",

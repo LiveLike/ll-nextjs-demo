@@ -1,4 +1,4 @@
-import { IChatUserMessageResponsePayload } from "@livelike/engagement-api";
+import { IChatUserMessageResponsePayload } from "@livelike/javascript";
 import styles from "./ChatMessage.module.css";
 
 export function ChatMessage({

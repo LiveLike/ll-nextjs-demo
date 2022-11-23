@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { initApi, getMessageList } from "@livelike/engagement-api";
+import { init, getMessageList } from "@livelike/javascript";
 import { ChatRoom } from "../../components/ChatRoom/ChatRoom";
 import styles from "./[roomId].module.css";
 import { UserProfileProvider } from "../../components/UserProfileProvider/UserProfileProvider";
@@ -29,7 +29,7 @@ export default function Chatroom(props: IChatroomProps) {
 }
 
 export async function getServerSideProps(context) {
-  const profile = await initApi({
+  const profile = await init({
     endpoint: "https://cf-blast-dig.livelikecdn.com/api/v1/",
     clientId: "lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje",
   });
