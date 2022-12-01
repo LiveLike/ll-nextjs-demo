@@ -89,6 +89,18 @@ export function ChatRoom({ roomId, messages: propMessages }: IChatRoomProps) {
       updateMessageList(res, messages);
     });
   };
+  const onSendImageMessage = () => {
+    sendMessage({
+      roomId,
+      image_url:
+        "https://media0.giphy.com/media/3ogwFGEHrVxusDbDjO/giphy.gif?cid=b5f7e4ddqy9poflflu3tflaz7kgwgmi5hxqvvebvb0jeip63&rid=giphy.gif&ct=g",
+      image_width: "480",
+      image_height: "360",
+    }).then((res) => {
+      updateMessageList(res, messages);
+    });
+  };
+
   return (
     <>
       <div className={styles.chatroomList} ref={chatRoomListNodeRef}>
@@ -106,6 +118,14 @@ export function ChatRoom({ roomId, messages: propMessages }: IChatRoomProps) {
           value={chatRoomInput}
           placeholder="Enter Message"
         />
+        <button
+          className={styles.sendButton}
+          onClick={() => {
+            onSendImageMessage();
+          }}
+        >
+          Image
+        </button>
         <button
           className={styles.sendButton}
           onClick={() =>
