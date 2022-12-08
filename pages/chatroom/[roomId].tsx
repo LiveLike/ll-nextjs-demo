@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { init, getMessageList, sendMessage } from "@livelike/javascript";
+import { init, getMessageList } from "@livelike/javascript";
 import { ChatRoom } from "../../components/ChatRoom/ChatRoom";
 import styles from "./[roomId].module.css";
 import { UserProfileProvider } from "../../components/UserProfileProvider/UserProfileProvider";
@@ -34,18 +34,7 @@ export async function getServerSideProps(context) {
     endpoint: "https://cf-blast-dig.livelikecdn.com/api/v1/",
     clientId: "lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje",
   });
-  // await sendMessage({
-  //   roomId: "6c5577e7-95cf-40ff-9a29-a6f57d0da322",
-  //   image_url:
-  //     "https://media0.giphy.com/media/3ogwFGEHrVxusDbDjO/giphy.gif?cid=b5f7e4ddqy9poflflu3tflaz7kgwgmi5hxqvvebvb0jeip63&rid=giphy.gif&ct=g",
-  //   image_width: "480",
-  //   image_height: "360",
-  // }).then((res) => {
-  //   console.log("image message send", res);
-  // });
-
   await APITester();
-
   const messageResponse = await getMessageList(context.params.roomId);
   return {
     props: {
